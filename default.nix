@@ -6,7 +6,7 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> { } }:
 
 {
   # The `lib`, `modules`, and `overlay` names are special
@@ -15,8 +15,9 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   frp = pkgs.callPackage ./pkgs/servers/frp { };
-  webdis = pkgs.callPackage ./pkgs/servers/webdis {};
-  swdc = pkgs.callPackage ./pkgs/development/swdc {};
-  wrangler = pkgs.callPackage ./pkgs/development/wrangler {};
+  webdis = pkgs.callPackage ./pkgs/servers/webdis { };
+  swdc = pkgs.callPackage ./pkgs/development/swdc { };
+  wrangler = pkgs.callPackage ./pkgs/development/wrangler { };
+  php74 = pkgs.callPackage ./pkgs/development/php/php74 {};
 }
 
