@@ -41,7 +41,6 @@ stdenv.mkDerivation rec {
 
   configureFlags = [
     "--with-config-file-scan-dir=/etc/php.d"
-    "--with-pcre-regex=${pcre2.dev} PCRE_LIBDIR=${pcre2}"
     "--with-curl"
     "--with-zlib"
     "--with-libxml"
@@ -52,7 +51,6 @@ stdenv.mkDerivation rec {
     "--with-mysql-sock=/run/mysqld/mysqld.sock"
     "--enable-gd"
     "--with-freetype"
-    "--with-png"
     "--with-jpeg"
     "--with-webp"
     "--enable-soap"
@@ -63,7 +61,7 @@ stdenv.mkDerivation rec {
     "--with-bz2=${bzip2.dev}"
     "--with-readline=${readline.dev}"
     "--with-pdo-sqlite=${sqlite.dev}"
-    "--enable-zip"
+    "--with-zip"
     "--enable-ftp"
     "--enable-calendar"
     "--enable-fpm"
