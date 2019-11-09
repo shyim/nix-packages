@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+TMPDIR=$(mktemp -d)
+derivation=$1
+
+nix copy --to "file://$TMPDIR" "$derivation"
+nix sign-paths --store "file://$TMPDIR" -k cache-priv-key.pem "$derivation" -r
+rclone copy --config=rclone.cfg "$TMPDIR/" NixCache:/ -vv
