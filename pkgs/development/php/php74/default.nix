@@ -70,6 +70,8 @@ stdenv.mkDerivation rec {
     "--with-valgrind=${valgrind.dev}"
   ];
 
+  hardeningDisable = [ "bindnow" ];
+
   preConfigure = ''
            # Don't record the configure flags since this causes unnecessary
            # runtime dependencies
@@ -92,14 +94,6 @@ stdenv.mkDerivation rec {
   postInstall = ''
     test -d $out/etc || mkdir $out/etc
     cp php.ini-production $out/etc/php.ini
-  '';
-
-  postFixup = ''
-    mkdir -p $dev/bin $dev/share/man/man1
-    mv $out/bin/phpize $out/bin/php-config $dev/bin/
-    mv $out/share/man/man1/phpize.1.gz \
-      $out/share/man/man1/php-config.1.gz \
-      $dev/share/man/man1/
   '';
 
   src = fetchurl rec {
