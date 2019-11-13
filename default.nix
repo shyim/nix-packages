@@ -19,5 +19,7 @@
   swdc = pkgs.callPackage ./pkgs/development/swdc { };
   wrangler = pkgs.callPackage ./pkgs/development/wrangler { };
   php74 = pkgs.callPackage ./pkgs/development/php/php74 { };
+
+  phpstorm = pkgs.callPackage ./pkgs/applications/editors/phpstorm { };
 }
 

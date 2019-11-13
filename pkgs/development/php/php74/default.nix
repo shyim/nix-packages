@@ -68,6 +68,7 @@ stdenv.mkDerivation rec {
     "--with-sodium"
     "--enable-bcmath"
     "--with-valgrind=${valgrind.dev}"
+    "--enable-pcntl"
   ];
 
   hardeningDisable = [ "bindnow" ];
