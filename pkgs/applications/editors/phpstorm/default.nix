@@ -24,13 +24,13 @@ let
 
 in buildPhpStorm rec {
   name = "phpstorm-${version}";
-  version = "2019.2.5";
+  version = "2019.3";
   description = "Professional IDE for Web and PHP developers";
   license = stdenv.lib.licenses.free;
   src = fetchurl {
     url = "https://download.jetbrains.com/webide/PhpStorm-${version}.tar.gz";
     sha256 =
-      "079xiv4k44xkpyhp9fr7qdlkm9cvd39id0y7p6r1mfk1w60nqv7j";
+      "18k226q6v7gsv7a989pxvynw4qrd133fcsz7jqn6siqbfmwvzdyv";
   };
   wmClass = "jetbrains-phpstorm";
   update-channel = "PhpStorm RELEASE";
