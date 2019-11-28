@@ -3,11 +3,11 @@
 , pcre, pcre2, sqlite, config, libjpeg, libpng, freetype, libxslt, libmcrypt
 , bzip2, icu, openldap, cyrus_sasl, libmhash, unixODBC, uwimap, pam, gmp
 , apacheHttpd, libiconv, systemd, libsodium, html-tidy, libargon2, libzip
-, valgrind, oniguruma, mysql57, libwebp }:
+, valgrind, oniguruma, mysql57, libwebp, libffi }:
 
 stdenv.mkDerivation rec {
   name = "php7.4";
-  version = "7.4.0RC5";
+  version = "7.4.0";
   enableParallelBuilding = true;
   nativeBuildInputs = [ autoconf bison libtool pkgconfig re2c ];
   buildInputs = [
@@ -37,6 +37,7 @@ stdenv.mkDerivation rec {
     libargon2
     valgrind
     oniguruma
+    libffi
   ];
 
   configureFlags = [
@@ -69,6 +70,7 @@ stdenv.mkDerivation rec {
     "--enable-bcmath"
     "--with-valgrind=${valgrind.dev}"
     "--enable-pcntl"
+    "--with-ffi"
   ];
 
   hardeningDisable = [ "bindnow" ];
@@ -86,11 +88,9 @@ stdenv.mkDerivation rec {
            export EXTENSION_DIR=$out/lib/php/extensions
            configureFlags+=(--with-config-file-path=$out/etc \
              --includedir=$dev/include)
-    cp main/php_version.h main/php_version_copy.h 
      ./buildconf --force
          '';
 
-  preBuild = "cp main/php_version_copy.h main/php_version.h";
 
   postInstall = ''
     test -d $out/etc || mkdir $out/etc
@@ -98,8 +98,8 @@ stdenv.mkDerivation rec {
   '';
 
   src = fetchurl rec {
-    url = "https://downloads.php.net/~derick/php-7.4.0RC5.tar.bz2";
-    sha256 = "1p9p801ychz46dznx57jr07gyqq2v3lx0990h3n9pak8hba2gw0h";
+    url = "https://www.php.net/distributions/php-7.4.0.tar.bz2";
+    sha256 = "1h01bahvcm9kgm5jqhm2j9k9d4q4rpfkkpqk00c47rirdblnn85z";
   };
 }
 
