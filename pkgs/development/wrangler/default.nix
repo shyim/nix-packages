@@ -4,15 +4,15 @@ with rustPlatform;
 
 buildRustPackage rec {
   pname = "wrangler";
-  version = "1.5.0";
+  version = "1.6.0";
 
-  cargoSha256 = "1dkfwlhz3xy16aghy9725xmbn8j844zjardfcgsnfrpsyyh40nsp";
+  cargoSha256 = "1qw969vh3img92rw0wc0c768gysv2g5a0wr4qsdvbww4j61j4vsz";
 
   src = fetchFromGitHub {
     owner = "cloudflare";
     repo = "wrangler";
     rev = "v${version}";
-    sha256 = "0h6cz7554g25jx4j9pjg8jw8x8fbvz08lbyrag8nsr0n31aal185";
+    sha256 = "1rbjjyax6w87xdq722rndp3lhx9v70fcj8a9d6pbm9ys2x8r4xqs";
   };
 
   nativeBuildInputs = [ cmake pkgconfig openssl.dev ];
