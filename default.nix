@@ -20,5 +20,6 @@
   wrangler = pkgs.callPackage ./pkgs/development/wrangler { };
 
   phpstorm = pkgs.callPackage ./pkgs/applications/editors/phpstorm { };
+  ncspot = pkgs.callPackage ./pkgs/applications/audio/ncspot { };
 }
 
