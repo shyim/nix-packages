@@ -7,11 +7,9 @@ steps:
     source ~/.nix-profile/etc/profile.d/nix.sh
     nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs
     nix-channel --update
-    nix-env -iA nixpkgs.rclone
-    mkdir -p $HOME/.config/nix
-    echo "substituters = https://cache.nixos.org https://snix.ovh" > $HOME/.config/nix/nix.conf
-    echo "trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= snix.ovh:ALIRUOtoiM/NKfVaL+I+AFU9/BYDOqBbm081csf8Xz0=" >> $HOME/.config/nix/nix.conf
-    
+    nix-env -iA cachix -f https://cachix.org/api/v1/install
+    cachix use shyim
+   
   displayName: 'Setup Nix Package Manager'
 
 - script: |
@@ -28,20 +26,9 @@ steps:
 
   displayName: 'Test nix code'
 
-- task: DownloadSecureFile@1
-  name: cachePrivKey
-  inputs:
-    secureFile: 'cache-priv-key.pem'
-
-- task: DownloadSecureFile@1
-  name: rcloneCfg
-  inputs:
-    secureFile: 'rclone.cfg'
 
 - script: |
     source ~/.nix-profile/etc/profile.d/nix.sh
-    mv $(rcloneCfg.secureFilePath) .
-    mv $(cachePrivKey.secureFilePath) .
-    nix-build ci.nix -A cacheOutputs | ./cache-builder-pipe
+    nix-build ci.nix -A cacheOutputs | cachix push shyim
 
   displayName: 'Upload to Cache'
