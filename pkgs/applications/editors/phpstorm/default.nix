@@ -1,4 +1,4 @@
-{ lib, stdenv, callPackage, fetchurl, python, jdk, cmake, libxml2, zlib, python3
+{ lib, stdenv, callPackage, fetchurl, python, jetbrains, cmake, libxml2, zlib, python3
 , ncurses5 }:
 
 with stdenv.lib;
@@ -7,8 +7,9 @@ let
   mkJetBrainsProduct = callPackage ./common.nix { };
   buildPhpStorm = { name, version, src, license, description, wmClass, ... }:
     (mkJetBrainsProduct {
-      inherit name version src wmClass jdk;
+      inherit name version src wmClass;
       product = "PhpStorm";
+      jdk = jetbrains.jdk;
       meta = with stdenv.lib; {
         homepage = "https://www.jetbrains.com/phpstorm/";
         inherit description license;
