@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+derivation=$1
+
+nix copy --to "s3://nix?scheme=https&endpoint=s3-minio-shyim.cloud.okteto.net" --option narinfo-cache-positive-ttl 0 "$derivation"
+nix sign-paths --store "s3://nix?scheme=https&endpoint=s3-minio-shyim.cloud.okteto.net" -k cache-priv-key.pem "$derivation" -r
