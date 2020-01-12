@@ -34,7 +34,7 @@ steps:
 
 - script: |
     source ~/.nix-profile/etc/profile.d/nix.sh
-    mv $(rcloneCfg.secureFilePath) .
+    mv $(cachePrivKey.secureFilePath) .
     nix-build ci.nix -A cacheOutputs | ./cache-builder-pipe
 
   displayName: 'Upload to Cache'
