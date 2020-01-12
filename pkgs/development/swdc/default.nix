@@ -3,14 +3,14 @@
 
 stdenv.mkDerivation rec {
   name = "shopware-docker";
-  version = "2019-11-28";
+  version = "2020-01-10";
   dontPatchShebangs = true;
 
   src = fetchFromGitHub {
     owner = "shyim";
     repo = "shopware-docker";
-    rev = "36f1f41ab3683330179cd19faa964dc2fe98c67a";
-    sha256 = "0i931zn7fpyx45bzgfywjxvyqniq5h2mmzvgklf0ba510hbcaisr";
+    rev = "c568578e45b438876c58a17317d424c655a33a62";
+    sha256 = "16l5ws0kg16za0ps0k0d21l001hi0vy6j8qfsjfhf4a5xd0l7kr5";
   };
 
   installPhase = ''
