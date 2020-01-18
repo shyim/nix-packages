@@ -1,6 +1,9 @@
 pool:
   vmImage: 'ubuntu-latest'
 
+schedules:
+  - cron: "0 0,6,12,18 * * *"
+
 steps:
 - script: |
     bash <(curl https://nixos.org/nix/install)
