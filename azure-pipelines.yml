@@ -1,14 +1,21 @@
 pool:
   vmImage: 'ubuntu-latest'
 
+schedules:
+  - cron: "0 0,6,12,18 * * *"
+    branches:
+      include:
+        - master
+
 steps:
 - script: |
     bash <(curl https://nixos.org/nix/install)
     source ~/.nix-profile/etc/profile.d/nix.sh
     nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs
     nix-channel --update
-    nix-env -iA cachix -f https://cachix.org/api/v1/install
-    cachix use shyim
+    mkdir -p $HOME/.config/nix
+    echo "substituters = https://cache.nixos.org https://s3-minio-shyim.cloud.okteto.net/nix" > $HOME/.config/nix/nix.conf
+    echo "trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= snix.ovh:ALIRUOtoiM/NKfVaL+I+AFU9/BYDOqBbm081csf8Xz0=" >> $HOME/.config/nix/nix.conf
    
   displayName: 'Setup Nix Package Manager'
 
@@ -26,9 +33,14 @@ steps:
 
   displayName: 'Test nix code'
 
+- task: DownloadSecureFile@1
+  name: cachePrivKey
+  inputs:
+    secureFile: 'cache-priv-key.pem'
 
 - script: |
     source ~/.nix-profile/etc/profile.d/nix.sh
-    nix-build ci.nix -A cacheOutputs | cachix push shyim
+    mv $(cachePrivKey.secureFilePath) .
+    nix-build ci.nix -A cacheOutputs | ./cache-builder-pipe
 
   displayName: 'Upload to Cache'

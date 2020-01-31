@@ -21,6 +21,6 @@
 
   phpstorm = pkgs.callPackage ./pkgs/applications/editors/phpstorm { };
   ncspot = pkgs.callPackage ./pkgs/applications/audio/ncspot { };
-  polybar = (pkgs.polybar.override { i3Support = true; });
+  polybar = (pkgs.polybar.override { i3Support = true; pulseSupport = true; });
 }
 
