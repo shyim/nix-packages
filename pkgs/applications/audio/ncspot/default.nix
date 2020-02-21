@@ -15,7 +15,7 @@ rustPlatform.buildRustPackage rec {
     sha256 = "0ldisr45w6ys1j62qv99ssqfg5q9dwrrzxh2maggyrx1zqdlsk6m";
   };
 
-  cargoSha256 = "0k765hinqxfm30li1z66m1chsv69v6hiz109q2zlkxzg937qbnjh";
+  cargoSha256 = "0ki0ads7wvhspp36hdpn7zmfsrj41sprjz5596rs0vpd9r4aad12";
 
   cargoBuildFlags = [ "--features" "pulseaudio_backend,mpris" ];
 
