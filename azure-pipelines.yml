@@ -11,7 +11,7 @@ steps:
 - script: |
     bash <(curl https://nixos.org/nix/install)
     source ~/.nix-profile/etc/profile.d/nix.sh
-    nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs
+    nix-channel --add https://nixos.org/channels/nixos-20.03 nixpkgs
     nix-channel --update
     mkdir -p $HOME/.config/nix
     echo "substituters = https://cache.nixos.org https://s3-minio-shyim.cloud.okteto.net/nix" > $HOME/.config/nix/nix.conf
