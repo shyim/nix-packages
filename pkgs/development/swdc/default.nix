@@ -9,8 +9,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "shyim";
     repo = "shopware-docker";
-    rev = "ae98de55e0cd9370e69414b9ef4214bd7e305d22";
-    sha256 = "0is6r5qrqbfk6mi5vwml494j6lzkswsdaq8lnd8b40271kblfhkb";
+    rev = "0f445ca971e98d7707e8b5b2a6b3661bf172110e";
+    sha256 = "0sqr1znk36p5fr4bwhqbzp692l9plwbchpnij67p5yskb15q6lsb";
   };
 
   installPhase = ''
