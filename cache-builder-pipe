@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-while read line; do
-  ./cache-builder $line
-done 

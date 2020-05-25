@@ -17,10 +17,8 @@
   frp = pkgs.callPackage ./pkgs/servers/frp { };
   webdis = pkgs.callPackage ./pkgs/servers/webdis { };
   swdc = pkgs.callPackage ./pkgs/development/swdc { };
-  wrangler = pkgs.callPackage ./pkgs/development/wrangler { };
 
   phpstorm = pkgs.callPackage ./pkgs/applications/editors/phpstorm { };
-  ncspot = pkgs.callPackage ./pkgs/applications/audio/ncspot { };
   polybar = (pkgs.polybar.override { i3Support = true; pulseSupport = true; });
 }
 

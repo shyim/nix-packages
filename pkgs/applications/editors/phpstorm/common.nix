@@ -1,4 +1,4 @@
-{ stdenv, lib, makeDesktopItem, makeWrapper, patchelf, p7zip, coreutils, gnugrep
+{ stdenv, lib, makeDesktopItem, makeWrapper, patchelf, coreutils, gnugrep
 , which, git, unzip, libsecret, libnotify }:
 
 { name, product, version, src, wmClass, jdk, meta }:
@@ -26,7 +26,7 @@ lib.makeOverridable mkDerivation rec {
     '';
   };
 
-  nativeBuildInputs = [ makeWrapper patchelf p7zip unzip ];
+  nativeBuildInputs = [ makeWrapper patchelf unzip ];
 
   patchPhase = lib.optionalString (!stdenv.isDarwin) ''
     get_file_size() {
