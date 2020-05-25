@@ -3,6 +3,9 @@ pool:
 
 schedules:
   - cron: "* */6 * * *"
+    branches:
+      include:
+        - master
 
 steps:
 - script: |
