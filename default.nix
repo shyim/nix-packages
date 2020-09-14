@@ -17,6 +17,8 @@
   frp = pkgs.callPackage ./pkgs/servers/frp { };
   webdis = pkgs.callPackage ./pkgs/servers/webdis { };
   swdc = pkgs.callPackage ./pkgs/development/swdc { };
+  composer2 = pkgs.callPackage ./pkgs/development/composer2 { };
+
 
   phpstorm = pkgs.callPackage ./pkgs/applications/editors/phpstorm { };
   polybar = (pkgs.polybar.override { i3Support = true; pulseSupport = true; });
