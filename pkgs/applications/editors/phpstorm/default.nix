@@ -25,13 +25,13 @@ let
 
 in buildPhpStorm rec {
   name = "phpstorm-${version}";
-  version = "2020.2.2";
+  version = "2020.2.3";
   description = "Professional IDE for Web and PHP developers";
   license = stdenv.lib.licenses.free;
   src = fetchurl {
-    url = "https://download-cf.jetbrains.com/webide/PhpStorm-2020.2.2.tar.gz";
+    url = "https://download-cf.jetbrains.com/webide/PhpStorm-2020.2.3.tar.gz";
     sha256 =
-      "16pbfh81cwkn6vnaw8rh3l1bi7dl5099z8vbp46grmf560dmqrrj";
+      "0bdxmxml6337cdpb2amhdqlvxicng50cgzlnmiw0wqnmwj5ihpih";
   };
   wmClass = "jetbrains-phpstorm";
   update-channel = "PhpStorm RELEASE";
