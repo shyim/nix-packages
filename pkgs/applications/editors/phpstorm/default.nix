@@ -29,9 +29,9 @@ in buildPhpStorm rec {
   description = "Professional IDE for Web and PHP developers";
   license = stdenv.lib.licenses.free;
   src = fetchurl {
-    url = "https://download-cf.jetbrains.com/webide/PhpStorm-203.5600.44.tar.gz";
+    url = "https://download-cf.jetbrains.com/webide/PhpStorm-203.5981.118.tar.gz";
     sha256 =
-      "1vkwcwb9zfma4dk5ljivv9ghgrw2z2ldhy6ffrc5brwjqlq9i73l";
+      "00ww6nrd6bx14glhryx5s43id7h3kgabkx85csafr45378pi7hiy";
   };
   wmClass = "jetbrains-phpstorm";
   update-channel = "PhpStorm RELEASE";
